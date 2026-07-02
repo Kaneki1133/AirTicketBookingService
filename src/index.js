@@ -14,10 +14,13 @@ const setupAndStartServer = async () =>{
     app.use(`/api`, apiRoutes);
 
     app.listen(PORT , ()=>{
-        console.log(`Server Started On Port ${PORT} `);
-        if(process.env.DB_SYNC){
+        console.log(`Server Started for BookingService On Port ${PORT} `);
+        if(process.env.DB_SYNC == 'true'){              //* console.log(typeof process.env.DB_SYNC);   beacuse typeOf is String so has to do == 'true'
             db.sequelize.sync({alter:true});
         }
+        
+        
+        console.log("Booking Service Server");
     });
 }
 
